@@ -1,4 +1,4 @@
-# Random TTY Screensaver
+# ttyme-tracker
 
 Track your time usage with this [timewarrior](https://github.com/GothenburgBitFactory/timewarrior) wrapper.
 
@@ -32,8 +32,15 @@ This is just a bash script, so:
 ## Usage
 
   Run the name of the executable
-  ```sh
-  ttyme
+
+  ```
+  Usage: ttyme [OPTIONS]
+
+  Options:
+    -c, --continue    Continue the previous activity
+    -i, --info        Show this help message
+    -s, --stop        Stop the current timewarrior task
+    -h, --help        Show this help message
   ```
 
   The tag list to choose from can be changed by modifying the `$TAGS` array in `ttyme-tracker.sh`
