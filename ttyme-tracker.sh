@@ -16,7 +16,7 @@ if [[ $CONTINUE -eq 1 ]]; then
 elif [[ $STOP -eq 1 ]]; then
     timew stop
 else
-    CATEGORIES=(
+    TAGS=(
         "Config"
         "Life"
         "Relax"
@@ -24,5 +24,5 @@ else
         "Work"
         "Waste"
     )
-    timew start "$(printf "%s\n" "${CATEGORIES[@]}" | fzf --preview-window hidden)"
+    timew start "$(printf "%s\n" "${TAGS[@]}" | fzf --preview-window hidden)"
 fi
