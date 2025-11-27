@@ -36,8 +36,10 @@ This is just a bash script, so:
   ```
   Usage: ttyme [OPTIONS]
 
+  If no options are provided, you will be prompted to choose a tag to start a new session with.
+
   Options:
-    -c, --continue    Continue the previous activity
+    -c, --continue    Continue the previous session
     -i, --info        Show this help message
     -s, --stop        Stop the current timewarrior task
     -h, --help        Show this help message

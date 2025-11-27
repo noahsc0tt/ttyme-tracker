@@ -16,9 +16,11 @@ INFO=0
 function show_help() {
     echo "Usage: $0 [OPTIONS]"
     echo
+    echo "If no options are provided, you will be prompted to choose a tag to start a new session with."
+    echo
     echo "Options:"
-    echo "  -c, --continue    Continue the previous activity"
-    echo "  -i, --info        Show this help message"
+    echo "  -c, --continue    Continue the previous session"
+    echo "  -i, --info        Show current timewarrior status"
     echo "  -s, --stop        Stop the current timewarrior task"
     echo "  -h, --help        Show this help message"
 }
