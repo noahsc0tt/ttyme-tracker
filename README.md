@@ -40,8 +40,13 @@ This is just a bash script, so:
 
   Options:
     -c, --continue    Continue the previous session
-    -i, --info        Show this help message
+    -i, --info        Show current timewarrior status
+    -t, --today       Show today's summary
+    -w, --week        Show this week's summary
+    -m, --month       Show this month's summary
+    -y, --year        Show this year's summary
     -s, --stop        Stop the current timewarrior task
+    -d, --delete      Delete a timewarrior entry
     -h, --help        Show this help message
   ```
 

@@ -10,12 +10,13 @@ TAGS=(
 )
 
 CONTINUE=0
-STOP=0
 INFO=0
 TODAY=0
 WEEK=0
 MONTH=0
 YEAR=0
+STOP=0
+DELETE=0
 
 function show_help() {
     echo "Usage: $0 [OPTIONS]"
@@ -30,12 +31,12 @@ function show_help() {
     echo "  -m, --month       Show this month's summary"
     echo "  -y, --year        Show this year's summary"
     echo "  -s, --stop        Stop the current timewarrior task"
+    echo "  -d, --delete      Delete a timewarrior entry"
     echo "  -h, --help        Show this help message"
 }
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -h|--help) show_help; exit 0;;
         -c|--continue) CONTINUE=1; shift;;
         -i|--info) INFO=1; shift;;
         -t|--today) TODAY=1; shift;;
@@ -43,6 +44,8 @@ while [[ $# -gt 0 ]]; do
         -m|--month) MONTH=1; shift;;
         -y|--year) YEAR=1; shift;;
         -s|--stop) STOP=1; shift;;
+        -d|--delete) DELETE=1; shift;;
+        -h|--help) show_help; exit 0;;
         *) echo "unknown option: $1"; show_help; exit 1;;
     esac
 done
@@ -51,6 +54,13 @@ if [[ $CONTINUE -eq 1 ]]; then
     timew continue
 elif [[ $STOP -eq 1 ]]; then
     timew stop
+elif [[ $DELETE -eq 1 ]]; then
+    session=$(timew summary :year \
+        | tail -n +4 | head -n -3 \
+        | tac \
+        | sed 's/^[^@]*//; s/ .*$//' \
+        | fzf --preview 'timew summary {}')
+    [[ -n $session ]] && timew delete "$session"
 elif [[ $INFO -eq 1 ]]; then
     timew
 elif [[ $TODAY -eq 1 ]]; then
